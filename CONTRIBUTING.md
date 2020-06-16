@@ -101,8 +101,13 @@ To protect the Hyperledger Cactus source code, GitHub pull requests are accepted
 
 > Whenever you begin work on a new feature or bugfix, it's important that you create a new branch. 
 
+<<<<<<< HEAD
 1. Clone your fork to your local machine
 2. Setup your local fork to keep up-to-date (optional)
+=======
+1. Clone your fork to your local machine.
+2. Setup your local fork to keep up-to-date (optional).
+>>>>>>> a054a8b... docs(contributing): create branch
    ```
    # Add 'upstream' repo to list of remotes
    git remote add upstream https://github.com/hyperledger/cactus.git
@@ -110,6 +115,7 @@ To protect the Hyperledger Cactus source code, GitHub pull requests are accepted
    # Verify the new remote named 'upstream'
    git remote -v
 
+<<<<<<< HEAD
    # Fetch from upstream remote
    git fetch upstream
 
@@ -122,10 +128,20 @@ To protect the Hyperledger Cactus source code, GitHub pull requests are accepted
    git merge upstream/master
    ```
 3. Create your branch
+=======
+   # Checkout your master branch and rebase to upstream. 
+   # Run those commands whenever you want to synchronize with master branch
+   git fetch upstream
+   git checkout master
+   git rebase upstream/master
+   ```
+3. Create your branch.
+>>>>>>> a054a8b... docs(contributing): create branch
    ```
    # Checkout the master branch - you want your new branch to come from master
    git checkout master
 
+<<<<<<< HEAD
    # Create a new branch named `<newfeature>` (give your branch its own simple informative name)
    git branch <newfeature>
 
@@ -140,20 +156,35 @@ To protect the Hyperledger Cactus source code, GitHub pull requests are accepted
    git merge upstream/master
    ```
 5. Checkout your branch and add/modify files
+=======
+   # Create a new branch named `<newfeature>` (give simple informative name)
+   git branch <newfeature>
+   ```
+4. Checkout your branch and add/modify files.
+>>>>>>> a054a8b... docs(contributing): create branch
    ```
    git checkout <newfeature>
    git rebase master
    # Happy coding !
    ```
+<<<<<<< HEAD
 6. Commit changes to your branch
+=======
+5. Commit changes to your branch.
+>>>>>>> a054a8b... docs(contributing): create branch
    ```
    # Commit and push your changes to your fork
    git add -A
    git commit -s -m "<type>[optional scope]: <description>"
    git push origin <newfeature>
    ```
+<<<<<<< HEAD
 
 7. Once you've committed and pushed all of your changes to GitHub, go to the page for your fork on GitHub, select your development branch, and click the pull request button. 
+=======
+6. Once you've committed and pushed all of your changes to GitHub, go to the page for your fork on GitHub, select your development branch, and click the pull request button.
+7. Repeat step 3 to 6 when you need to prepare posting new pull request.
+>>>>>>> a054a8b... docs(contributing): create branch
  
 NOTE: Once you submitted pull request to Cactus repository, step 6 is not necessary when you made further changes with `git commit --amend` since your amends will be sent automatically.
 
