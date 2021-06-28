@@ -11,6 +11,10 @@ import { AbiItem } from "web3-utils";
 
 import { Contract, ContractSendMethod } from "web3-eth-contract";
 import { TransactionReceipt } from "web3-eth";
+import {
+  GetBalanceV1Request,
+  GetBalanceV1Response,
+} from "./generated/openapi/typescript-axios/index";
 
 import {
   ConsensusAlgorithmFamily,
@@ -56,6 +60,8 @@ import {
   Web3SigningCredentialCactusKeychainRef,
   Web3SigningCredentialPrivateKeyHex,
   Web3SigningCredentialType,
+  GetTransactionV1Request,
+  GetTransactionV1Response,
 } from "./generated/openapi/typescript-axios/";
 
 import { RunTransactionEndpoint } from "./web-services/run-transaction-endpoint";
@@ -149,6 +155,10 @@ export class PluginLedgerConnectorBesu
 
   public getInstanceId(): string {
     return this.instanceId;
+  }
+
+  public async onPluginInit(): Promise<unknown> {
+    return;
   }
 
   public getHttpServer(): Optional<Server | SecureServer> {
@@ -692,5 +702,24 @@ export class PluginLedgerConnectorBesu
     }
 
     return Optional.empty();
+  }
+
+  public async getBalance(
+    request: GetBalanceV1Request,
+  ): Promise<GetBalanceV1Response> {
+    const balance = await this.web3.eth.getBalance(
+      request.address,
+      request.defaultBlock,
+    );
+    return { balance };
+  }
+
+  public async getTransaction(
+    request: GetTransactionV1Request,
+  ): Promise<GetTransactionV1Response> {
+    const transaction = await this.web3.eth.getTransaction(
+      request.transactionHash,
+    );
+    return { transaction };
   }
 }

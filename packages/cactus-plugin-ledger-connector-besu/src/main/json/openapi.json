@@ -31,6 +31,87 @@
     ],
     "components": {
         "schemas": {
+            "GetBalanceV1Response": {
+                "type": "object",
+                "required": [
+                    "balance"                    
+                ],
+                "properties": {
+                    "balance": {
+                        "type": "string"
+                    }
+                }
+            },
+            "GetBalanceV1Request": {
+                "type": "object",
+                "required":[
+                    "address"
+                ],
+                "properties": {
+                    "address": {
+                        "type":"string"
+                    },
+                    "defaultBlock": {
+                    }
+                }
+            },
+
+            "EvmTransaction":{
+                "type":"object",
+                "properties":{
+                    "hash":{
+                        "type":"string"
+                    },
+                    "nonce":{
+                        "type":"number"
+                    },
+                    "blockHash":{
+                    },
+                    "blockNumber":{
+                    },
+                    "transactionIndex":{
+                    },
+                    "from":{
+                        "type":"string"
+                    },
+                    "to":{
+                    },
+                    "value":{
+                        "type":"string"
+                    },
+                    "gasPrice":{
+                        "type":"string"
+                    },
+                    "gas":{
+                        "type":"number"
+                    },
+                    "input":{
+                        "type":"string"
+                    }
+                }
+            },
+            "GetTransactionV1Response": {
+                "type": "object",
+                "required": [
+                    "transaction"                    
+                ],
+                "properties": {
+                    "transaction": {
+                        "$ref":"#/components/schemas/EvmTransaction"
+                        }
+                    }
+               
+            },
+            "GetTransactionV1Request": {
+                "type": "object",
+                "required": ["transactionHash"],
+                "properties": {
+                    "transactionHash":{
+                        "type": "string"
+                        }
+                    }
+                          
+            },
             "WatchBlocksV1": {
                 "type": "string",
                 "enum": [
